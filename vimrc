@@ -32,18 +32,18 @@ Bundle 'jistr/vim-nerdtree-tabs'
 "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
-Plugin 'https://github.com/Valloric/YouCompleteMe.git'
+"Plugin 'https://github.com/Valloric/YouCompleteMe.git'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'MarcWeber/vim-addon-mw-utils'
 "Plugin 'tomtom/tlib_vim'
 "Plugin 'garbas/vim-snipmate'
 "Plugin 'honza/vim-snippets'
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
+"filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -65,7 +65,6 @@ let g:ycm_global_ycm_extra_conf = '/home/prasad/.vim/bundle/YouCompleteMe/third_
 
 "display setting 
 :syntax on
-:set nowrap              " dont wrap lines
 :set scrolloff=2         " 2 lines above/below cursor when scrolling
 :set number              " show line numbers
 :set showmatch           " show matching bracket (briefly jump)
@@ -81,56 +80,46 @@ let g:ycm_global_ycm_extra_conf = '/home/prasad/.vim/bundle/YouCompleteMe/third_
 
 "editor setting
 
-:set cindent
-:set shiftwidth=4
-:set softtabstop=4
-:set autoindent
-:autocmd FileType *      set formatoptions=tcql nocindent comments&
-:autocmd FileType c,cpp  set formatoptions=croql cindent comments=sr:/*,mb:*,ex:*/,://
-:set autowrite
+":set shiftwidth=4
+":set softtabstop=4
+":autocmd FileType *      set formatoptions=tcql nocindent comments&
+":autocmd FileType c,cpp  set formatoptions=croql cindent comments=sr:/*,mb:*,ex:*/,://
+":set autowrite
 :ab #d #define
 :ab #i #include
 :ab #b /********************************************************
-:ab #e ********************************************************/
+:ab #e ********************************************************/
 :ab #l ------------------------------------------------------
-:set notextmode
-:set notextauto
+":set notextmode
+":set notextauto
 :set hlsearch
+:hi Search term=standout ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
 :set incsearch
-:set cursorline
-:hi cursorline cterm=NONE ctermbg=NONE ctermfg=white
-:set path+=/usr/include/c++/5.2.1
+":set cursorline
+":hi cursorline cterm=NONE ctermbg=NONE ctermfg=white
 
 "autoclosing
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
+"inoremap {      {}<Left>
+"inoremap {<CR>  {<CR>}<Esc>O
+"inoremap {{     {
+"inoremap {}     {}
+"
+"inoremap (      ()<Left>
+"inoremap (<CR>  (<CR>)<Esc>O
+"inoremap ((     (
+"inoremap ()     ()
 
-inoremap (      ()<Left>
-inoremap (<CR>  (<CR>)<Esc>O
-inoremap ((     (
-inoremap ()     ()
-
-inoremap "      ""<Left>
-inoremap "<CR>  "<CR>"<Esc>O
-inoremap ""     "
-inoremap ""     ""
-
-:autocmd bufnewfile *.c so /home/prasad/header.txt
-:autocmd bufnewfile *.cpp so /home/prasad/header.txt
-:set number
+":autocmd bufnewfile *.c so /home/prasad/header.txt
+":autocmd bufnewfile *.cpp so /home/prasad/header.txt
 
 "gcc
-:set cindent
-:set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
-:set shiftwidth=2
-:set softtabstop=2
-:set textwidth=79
-:set fo-=ro fo+=cql
+":set cindent
+":set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
+":set shiftwidth=2
+":set softtabstop=2
+":set textwidth=79
+":set fo-=ro fo+=cql
 
-"nerdtree plugin
-":autocmd vimenter * NERDTree
 :map <C-n> :NERDTreeToggle<CR>
 :let g:NERDTreeDirArrowExpandable = '▸'
 :let g:NERDTreeDirArrowCollapsible = '▾'
@@ -139,6 +128,16 @@ inoremap ""     ""
 "ctags
 :map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-"ycm
+":autocmd FileType java set tags=~/.tags
 
+"ycm
 :filetype plugin on
+
+"ColorColumn
+:set colorcolumn=80
+
+"Highlight changes
+:hi DiffChange     term=bold ctermbg=255 ctermfg=0 guibg=LightMagenta
+:hi DiffText       term=reverse cterm=bold ctermfg=0 ctermbg=9 gui=bold guibg=Red
+:hi DiffAdd        term=bold ctermfg=0 ctermbg=81 guibg=LightBlue
+:hi colorcolumn    term=standout ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
